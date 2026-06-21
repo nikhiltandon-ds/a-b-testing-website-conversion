@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Conversion Optimization: A/B Testing Framework</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #2563eb;
+            --accent: #10b981;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --text: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.025em;
+        }
+        .navbar-author {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+        .header-block {
+            margin-bottom: 2.5rem;
+        }
+        .project-title {
+            font-size: 2.2rem;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.03em;
+        }
+        .project-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-top: 0;
+        }
+        .badge-container {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background-color: #e2e8f0;
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .badge-tech {
+            background-color: #dbeafe;
+            color: var(--secondary);
+        }
+        .section {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
+        }
+        .section-title {
+            font-size: 1.4rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 1.25rem;
+            border-bottom: 2px solid var(--background);
+            padding-bottom: 0.5rem;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .metric-card {
+            background-color: var(--background);
+            border-left: 4px solid var(--secondary);
+            padding: 1.25rem;
+            border-radius: 0 8px 8px 0;
+        }
+        .metric-card.accent {
+            border-left-color: var(--accent);
+        }
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .visual-placeholder {
+            background-color: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 3rem 1rem;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin: 1.5rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+        th {
+            background-color: var(--background);
+            color: var(--primary);
+            text-align: left;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+        }
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        ul, ol {
+            padding-left: 1.25rem;
+            margin-bottom: 0;
+        }
+        li {
+            margin-bottom: 0.75rem;
+        }
+        li:last-child {
+            margin-bottom: 0;
+        }
+        strong {
+            color: var(--primary);
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            margin-top: 1rem;
+        }
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-brand">Data Analytics Portfolio Element</div>
+        <div class="navbar-author">Prepared by: Nikhil Tandon</div>
+    </nav>
+
+    <div class="container">
+        <div class="header-block">
+            <h1 class="project-title">E-Commerce Website Conversion Optimization</h1>
+            <p class="project-subtitle">A Statistical Hypothesis Testing Framework via Two-Sample T-Tests & Chi-Square Inferences</p>
+            <div class="badge-container">
+                <span class="badge badge-tech">Python</span>
+                <span class="badge badge-tech">SciPy Stats</span>
+                <span class="badge badge-tech">Pandas & NumPy</span>
+                <span class="badge badge-tech">A/B Testing</span>
+                <span class="badge badge-tech">Hypothesis Testing</span>
+                <span class="badge badge-tech">Seaborn / Matplotlib</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">1. Business Problem & Project Context</div>
+            <p>
+                In digital optimization and growth engineering, relying on pure intuition to modify user interfaces often leads to friction and lost revenue. This analysis evaluates an e-commerce platform's experimental redesign, pitting the legacy product layout (<strong>Design A</strong>) against a newly optimized alternative (<strong>Design B</strong>).
+            </p>
+            <p>
+                The objective is to establish statistical verification regarding whether Design B drives meaningful increases in customer engagement and absolute purchase transactions before executing a full-scale deployment.
+            </p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">2. Experimental Scope & Evaluation Methodology</div>
+            <p>
+                The experiment segregates incoming traffic into control and treatment groups to measure two critical performance tracking indicators:
+            </p>
+            <ul>
+                <li><strong>User Session Duration (Continuous Metric):</strong> Quantifies active engagement and surface attention. Analyzed using a <strong>Two-Sample Independent T-Test</strong> to evaluate differences between continuous means.</li>
+                <li><strong>User Purchase Action (Categorical Metric):</strong> Quantifies actual customer conversions. Analyzed using a <strong>Chi-Square ($\chi^2$) Test of Independence</strong> to confirm shifts in distribution rates.</li>
+            </ul>
+            <p>
+                All statistical thresholds are maintained against a strict significance standard of <strong>$\alpha = 0.05$</strong> (95% Confidence Interval).
+            </p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">3. Statistical Metrics & Experimental Inferences</div>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">30.0%</div>
+                    <div class="metric-label">Design A Conversion Rate</div>
+                </div>
+                <div class="metric-card accent">
+                    <div class="metric-value">50.0%</div>
+                    <div class="metric-label">Design B Conversion Rate</div>
+                </div>
+                <div class="metric-card accent">
+                    <div class="metric-value">+66.7%</div>
+                    <div class="metric-label">Relative Conversion Surge</div>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Evaluation Stream</th>
+                        <th>Statistical Test Applied</th>
+                        <th>Observed Metric Outcome</th>
+                        <th>P-Value Result</th>
+                        <th>Hypothesis Decision ($H_0$)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Session Duration</strong></td>
+                        <td>Two-Sample Independent T-Test</td>
+                        <td>Noticeable increase in engagement depth for Variant B</td>
+                        <td>&lt; 0.05</td>
+                        <td>Rejected (Statistically Significant)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Conversion Rate</strong></td>
+                        <td>Chi-Square ($\chi^2$) Test of Independence</td>
+                        <td>Distribution shift from 30% baseline to 50% target</td>
+                        <td>&ll; 0.05</td>
+                        <td>Rejected (Statistically Significant)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="visual-placeholder">
+                📊 [Interactive Analysis Plot Asset: Embed your Kernel Density Estimation (KDE) Engagement Curve & Conversion Bar Plots Here]
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">4. Actionable Strategic Recommendations</div>
+            <ul>
+                <li><strong>Full Production Rollout:</strong> Given that both continuous interaction velocity and absolute bottom-line conversion values have demonstrated high statistical significance, it is recommended to <strong>fully deploy Design B</strong> to replace Design A across 100% of live application traffic.</li>
+                <li><strong>Capital Efficiency & ROI Estimation:</strong> The observed transition from a 30% baseline to a 50% conversion represents a <strong>66.7% relative surge in transactions</strong>. This directly increases e-commerce revenue and optimizes profit thresholds without expanding digital marketing spend or increasing Customer Acquisition Costs (CAC).</li>
+            </ul>
+            <a href="#" class="btn">Download Complete Notebook Artifact</a>
+        </div>
+    </div>
+
+</body>
+</html>
